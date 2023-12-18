@@ -2,12 +2,13 @@
 
 int main(){
 	int a;
-	// this is sample comment
+	// {
 
-	/* this is also
-	a sample multiline comment
+	/* ( }
 	*/
+	)
 	int r;
 	//ghfthf
-	printf ("//dfgdh\"");
+	{
+	printf ("//dfgdhsdbc");
 }
