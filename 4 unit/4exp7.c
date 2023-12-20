@@ -37,7 +37,6 @@ int getline1(char s[], int lim) {
     s[i] = '\0';
 }
 
-
 int main(){
 	char line[MAXLINE],c;
 	getline1(line,MAXLINE);
