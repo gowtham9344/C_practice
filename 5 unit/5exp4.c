@@ -11,7 +11,8 @@ int strend(char* s,char* t){
 	while(len-- && *s-- == *t--){
 		//len--;
 	}
-	if(len > 0 && s == t){
+
+	if(len > 0 || *s != *t){
 		return 0;
 	}
 	return 1;
