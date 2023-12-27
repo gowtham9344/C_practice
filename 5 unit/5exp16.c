@@ -46,10 +46,31 @@ int numcmp(char* s1,char* s2){
 }
 
 int charcmp(char* s1,char* s2){
-	for(;tolower(*s1) == tolower(*s2);s1++,s2++)
-		if(*s1 == '\0' && *s2 == '\0')
-			return 0;
-	return tolower(*s1) - tolower(*s2);
+	int f = option & 4;
+	int d = option & 8;
+	char com1,com2;
+
+	do{
+		if(d){
+			while(!isalnum(*s1) && *s1 != ' ' && *s1 != '\0'){
+				s1++;
+			}
+			while(!isalnum(*s2) && *s2 != ' ' && *s2 != '\0'){
+                                s2++;
+                        }
+
+		}
+
+		com1 = (f) ? tolower(*s1) : *s1;
+                com2 = (f) ? tolower(*s2) : *s2;
+                if(com2 == '\0' && com1 == '\0'){
+                        return 0;
+                }
+		s1++;
+		s2++;
+	}while(com1 == com2);	
+
+	return com1 - com2;
 }
 
 void qsort1(void *v[],int left,int right, int (*comp)(void *,void *))
@@ -116,6 +137,9 @@ int main(int argc,char* argv[]) {
 			    case 'f':
 				    option = option | 4;
 				    break;
+		            case 'd':
+				    option = option | 8;
+				    break;
 			    default:
 				    printf("illegal option \n");
 				    error = 1;
@@ -130,10 +154,8 @@ int main(int argc,char* argv[]) {
 
 	if(option & 1)
         	qsort1((void **)lineptr, 0, nlines - 1,(int (*)(void *, void *)) numcmp);
-	else if(option & 4)
-                qsort1((void **)lineptr, 0, nlines - 1,(int (*)(void *, void *)) charcmp);
 	else
-		qsort1((void **)lineptr, 0, nlines - 1,(int (*)(void *, void *)) strcmp);
+		qsort1((void **)lineptr, 0, nlines - 1,(int (*)(void *, void *)) charcmp);
         writelines(lineptr, nlines,option & 2);
         return 0;
     } else {
