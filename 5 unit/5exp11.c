@@ -11,7 +11,7 @@ int tabstop[MAXLINE+1] = {0};
 int main(int argc,char* argv[])
 {
 	settabstop(argc,argv,tabstop);
-	entab();	
+	detab();	
 }
 
 void settabstop(int argc,char* argv[],int tabstop[]){
