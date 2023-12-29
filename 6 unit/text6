@@ -7,7 +7,7 @@
 
 struct tree_node
 {
-	char *word;
+	char *word = "aaaaaabb aaaaaabc";
 	int match;
 	struct tree_node *left, *right;
 	tree_nji;
