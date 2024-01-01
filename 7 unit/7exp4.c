@@ -4,57 +4,64 @@
 
 #define LOCALFMT 100
 
-void minprintf(char* fmt,...){
+void minscanf(char* fmt,...){
 	va_list ap;
 	char*p,*sval;
 	char localfmt[LOCALFMT];
-	int i,ival;
-	unsigned uval;
-	double dval;
+	int c,i,*ival;
+	unsigned *uval;
+	char temp[100];
+	float *dval;
 
+	i = 0;
 	va_start(ap,fmt);
 	
 	for(p = fmt;*p;p++){
 		if(*p != '%'){
-			putchar(*p);
+			localfmt[i++] = *p;
 			continue;		
 		}
-		i = 0;
 		localfmt[i++] = '%';
 		while(*(p+1) && !isalpha(*(p+1)))
 			localfmt[i++] = *++p;
+
 		localfmt[i++] = *(p+1);
 		localfmt[i] = '\0';
 		switch(*++p){
 			case 'd':
 			case 'i':
-				ival = va_arg(ap,int);
-				printf(localfmt,ival);
+				ival = va_arg(ap,int *);
+				scanf(localfmt,ival);
 				break;		
 			case 'x':
 			case 'X':
 			case 'u':
 			case 'o':
-				uval = va_arg(ap,unsigned);	
-				printf(localfmt,uval);	
+				uval = va_arg(ap,unsigned *);	
+				scanf(localfmt,uval);	
 				break;
 			case 'f':
-				dval = va_arg(ap,double);
-				printf(localfmt,dval);
+				dval = va_arg(ap,float *);
+				scanf(localfmt,dval);
 				break;
 			case 's':
 				sval = va_arg(ap,char*);
-				printf(localfmt,sval);	
+				scanf(localfmt,sval);	
 				break;
 			default:
-				printf(localfmt);
+				scanf(localfmt);
 				break;
 		}
+		i = 0;
 			
 	}
 	va_end(ap);
 }
 
 int main(){
-	printf("%10.4f %s %10d\n",5.0,"hello world",45);
+	int a;
+	float g;
+	char arr[100];
+	minscanf("%f %d %s",&g,&a,arr);
+	printf("%f %d %s\n",g,a,arr);
 }
