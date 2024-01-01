@@ -1,14 +1,7 @@
-#include <stdio.h>
-#include <ctype.h>
-#include <string.h>
-#include <stdlib.h>
+#define HELLO world
+#undef HELLO
 
-//Group variable names based on first num characters tree_nki
+int main(){
+	
+}
 
-struct tree_node
-{
-	char *word = "aaaaaabb aaaaaabc";
-	int match;
-	struct tree_node *left, *right;
-	tree_nji;
-};
