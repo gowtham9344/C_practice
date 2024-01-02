@@ -4,6 +4,9 @@
 #include <unistd.h>
 #include <stdarg.h>
 
+// this version is faster than normal version shown in chapter 7 because normally file open in implementation uses the read and write system call to this. so we are eliminating it to directly access it
+
+
 void error(char* fmt,...){
 	va_list args;
 	
