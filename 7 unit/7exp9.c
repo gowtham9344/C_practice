@@ -1,0 +1,3 @@
+/* the function version of isupper is used to save space because when we call to a function the function will run in its own stack space so it does not take the space of the same function where it was calling but it does not saves time because whenever there is a function call there must function saving and restoring this will take extra time*/
+
+/*the macro version of isupper is used to save time because when we call to a macro it does not need the stack space etc... as like in function calling but it does not saves the space because whenever a macro called the definition of macro is replaced the caller place. so it does save the space.*/
