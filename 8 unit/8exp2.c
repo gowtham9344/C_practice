@@ -189,8 +189,10 @@ int fclose(FILE *fp){
 		fp->ptr = NULL;
 		fp->cnt = 0;
 		fp->base = NULL;
-		fp->flag.is_read = 0;
-		fp->flag.is_write = 0;
+		fp->flag.is_unbuf = 0;
+		fp->flag.is_buf = 0;
+		fp->flag.is_eof = 0;
+		fp->flag.is_err = 0;
 	}
 	return rc;
 }
