@@ -11,6 +11,7 @@ union header {
         union header *ptr; /* next block if on free list */
         unsigned size;     /* size of this block */
     } s;
+    Align x;
 };
 
 typedef union header Header;
